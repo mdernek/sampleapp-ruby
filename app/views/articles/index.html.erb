@@ -1,0 +1,21 @@
+<h1>Listing Articles</h1>
+
+<div class="row mb-3 mt-5">
+    <div class="col-4 text-light bg-secondary">Title</div>
+    <div class="col-4 text-light bg-secondary">Text</div>
+    <div class="col-3 text-light bg-secondary">Actions</div>
+</div>
+<% @articles.each do |article| %>
+    <div class="row mb-3">
+        <div class="col-4 "><%= article.title %></div>
+        <div class="col-4 "><%= article.text %></div>
+        <div class="col-3">
+            <%= link_to 'Show', article_path(article), { class: 'btn btn-secondary my-2 my-sm-0' } %>
+            <%= link_to 'Edit', edit_article_path(article), { class: 'btn btn-secondary my-2 my-sm-0' } %>
+            <%= link_to 'Destroy', article_path(article),
+                                        class: 'btn btn-secondary my-2 my-sm-0',
+                                        method: :delete,
+                                        data: { confirm: 'Are you sure?' } %>
+        </div>
+    </div>
+<% end %>
