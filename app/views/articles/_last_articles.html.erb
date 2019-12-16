@@ -1,0 +1,7 @@
+<div class="col-md-4">
+    <h2><%= article.title %></h2>
+    <p><%= simple_format(article.text.truncate_words(45)) %></p>
+    <p>
+    <%= link_to "View Details »", "/articles/article_detail/#{article.id}", {class: "btn btn-secondary", role: "button"} %>
+    </p>
+</div>

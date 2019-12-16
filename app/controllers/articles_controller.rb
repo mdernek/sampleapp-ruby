@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+    before_action :require_login
+    layout "application_admin"
+
     def new
         @article = Article.new
     end
@@ -42,9 +45,20 @@ class ArticlesController < ApplicationController
         @article = Article.find(params[:id])
     end
 
+    def article_detail
+        @article = Article.find(params[:id])
+        render layout: "application"
+    end
+
     private
         def article_params
             params[:article].permit(:title, :text)
+        end
+
+        def require_login
+            if cookies.encrypted[:email].blank?
+                redirect_to login_users_path
+            end
         end
 
 end

@@ -1,4 +1,18 @@
 <%= form_with(model: [@article, @article.comments.build], local: true) do |form| %>
+    <% if @article.comments.build.errors.any? %>
+        <div id="error_explanation" class="form-group mt-5">
+            <h2>
+                <%= pluralize(@article.comments.errors.count, "error") %>
+                prohibited this comment from being saved:
+            </h2>
+            <ul>
+                <%= @article.comments.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    
     <p>
         <%= form.label :commenter %><br/>
         <%= form.text_field :commenter %>
@@ -8,6 +22,6 @@
         <%= form.text_area :body %>
     </p>
     <p>
-        <%= form.submit %>
+        <%= form.submit({class: 'btn btn-secondary my-2 my-sm-0'}) %>
     </p>
 <% end %>

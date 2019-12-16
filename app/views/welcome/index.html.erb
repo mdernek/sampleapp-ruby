@@ -1,2 +1,19 @@
-<h1>Hello Rails!</h1>
-<%= link_to 'Blog', controller: 'articles' %>
+<% if @articles.count > 0 %>
+    <%= render 'articles/main_article', article: @articles.first %>
+<% else%>
+    <div class="jumbotron">
+        <div class="container">
+            <h2>There is no article right now!</h2>
+        </div>
+    </div>
+<%end%>
+
+<div class="container">
+    <% if @articles.count > 1 %>
+        <% @articles.slice(1, @articles.count).each do |article| %>
+            <div class="row">
+                <%= render 'articles/last_articles', article: article %>
+            </div>
+        <%end%>
+    <%end%>
+</div>

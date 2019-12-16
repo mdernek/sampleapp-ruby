@@ -1,0 +1,7 @@
+<div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3"><%= article.title %></h1>
+      <p><%= simple_format(article.text.truncate_words(35)) %></p>
+      <%= link_to "Learn more »", "/articles/article_detail/#{article.id}", {class: "btn btn-primary btn-lg", role: "button"} %>
+    </div>
+  </div>
