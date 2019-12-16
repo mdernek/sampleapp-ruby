@@ -10,10 +10,10 @@
 
 <div class="container">
     <% if @articles.count > 1 %>
-        <% @articles.slice(1, @articles.count).each do |article| %>
-            <div class="row">
-                <%= render 'articles/last_articles', article: article %>
-            </div>
-        <%end%>
+        <div class="row">
+            <% @articles.slice(1, @articles.count).each do |article| %>
+                    <%= render 'articles/last_articles', article: article %>
+            <%end%>
+        </div>
     <%end%>
 </div>
